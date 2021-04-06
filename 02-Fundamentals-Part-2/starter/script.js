@@ -1,29 +1,43 @@
 'use strict';
 
-const pointsDolphins = [44, 23, 71];
-const pointsKoalas = [65, 54, 49];
+const friend1 = 'Michael';
+const friend2 = 'Steven';
+const friend3 = 'Peter';
 
-const calcAverage = points => points.reduce((prev, point) => prev + point, 0) / 3;
+const friends = ['Michael', 'Steven', 'Peter'];
 
-const checkWinner = (pointsDolphins, pointsKoalas) => {
+console.log(friends);
 
-const avgDolphins = calcAverage(pointsDolphins);
-const avgKoalas = calcAverage(pointsKoalas)
+const y = new Array(1991, 1984, 2008, 2020);
 
-switch (true) {
-  case avgDolphins >= avgKoalas * 2:
-    return `Dolphins win (${avgDolphins} vs. ${avgKoalas})`;
+console.log(friends[0]);
+console.log(friends[2]);
 
-  case avgKoalas >= avgDolphins * 2:
-    return `Koalas win (${avgKoalas} vs. ${avgDolphins})`;
+console.log(friends.length);
+console.log(friends[friends.length - 1]);
 
-  default:
-    return `No team wins! (${avgKoalas} and ${avgDolphins})`;
-  }
+friends[2] = 'Jay';
+console.log(friends);
+
+// friends = ['Bob', 'Alice'];
+
+const firstName = 'Jonas';
+const jonas = [firstName, 'Schmedtmann', 2020 - 1991, 'teacher', friends];
+
+console.log(jonas);
+console.log(jonas.length);
+
+const calcAge = function(birthYear) {
+  return 2037 - birthYear;
 }
 
-const result = checkWinner(pointsDolphins, pointsKoalas);
-console.log(result);
+const years = [1990, 1967, 2002, 2010, 2010];
 
+// const age1 = calcAge(years[0]);
+// const age2 = calcAge(years[1]);
+// const age3 = calcAge(years[years.lenngth - 1]);
+// console.log(age1, age2, age3);
 
+const ages = [calcAge(years[0]), calcAge(years[1]), calcAge(years[years.length - 1])];
 
+console.log(ages);
