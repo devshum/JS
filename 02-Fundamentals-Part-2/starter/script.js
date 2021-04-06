@@ -11,10 +11,10 @@ const avgDolphins = calcAverage(pointsDolphins);
 const avgKoalas = calcAverage(pointsKoalas)
 
 switch (true) {
-  case avgDolphins > avgKoalas * 2:
+  case avgDolphins >= avgKoalas * 2:
     return `Dolphins win (${avgDolphins} vs. ${avgKoalas})`;
 
-  case avgKoalas > avgDolphins * 2:
+  case avgKoalas >= avgDolphins * 2:
     return `Koalas win (${avgKoalas} vs. ${avgDolphins})`;
 
   default:
