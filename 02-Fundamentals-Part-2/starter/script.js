@@ -1,19 +1,29 @@
-const calcAge = function(birthYear) {
-  return 2037 - birthYear;
-}
+'use strict';
 
-const yearsUntilRetirement = function(birthYear, firstName) {
-  const age = calcAge(birthYear);
-  const retirement = 65 - age;
+const pointsDolphins = [44, 23, 71];
+const pointsKoalas = [65, 54, 49];
 
-  if(retirement > 0) {
-    console.log(`${firstName} retires in ${retirement} years`);
-    return retirement;
-  } else {
-    console.log(`${firstName} has been retired`);
-    return -1;
+const calcAverage = points => points.reduce((prev, point) => prev + point, 0) / 3;
+
+const checkWinner = (pointsDolphins, pointsKoalas) => {
+
+const avgDolphins = calcAverage(pointsDolphins);
+const avgKoalas = calcAverage(pointsKoalas)
+
+switch (true) {
+  case avgDolphins > avgKoalas * 2:
+    return `Dolphins win (${avgDolphins} vs. ${avgKoalas})`;
+
+  case avgKoalas > avgDolphins * 2:
+    return `Koalas win (${avgKoalas} vs. ${avgDolphins})`;
+
+  default:
+    return `No team wins! (${avgKoalas} and ${avgDolphins})`;
   }
 }
 
-console.log(yearsUntilRetirement(1998, 'Vlad'));
-console.log(yearsUntilRetirement(1950, 'Jonas'));
+const result = checkWinner(pointsDolphins, pointsKoalas);
+console.log(result);
+
+
+
