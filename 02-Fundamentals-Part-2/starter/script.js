@@ -1,15 +1,13 @@
-// Arrow function
-const calcAge = birthYear => 2021 - birthYear;
+function cutFruitPieces(fruit) {
+  return fruit * 3;
+}
 
-const age = calcAge(1998);
+function fruitProcessor(apples, oranges) {
+  const applePieces = cutFruitPieces(apples);
+  const orangePieces = cutFruitPieces(oranges);
 
-const yearsUntilRetirement = (birthYear, firstName) => {
-    const age = 2021 - birthYear;
-    const retirement = 65 - age;
+  const juice = `Juice with ${applePieces} apples and ${orangePieces} oranges.`;
+  return juice;
+}
 
-    return `${firstName} retires in ${retirement} years`;
-};
-
-console.log(yearsUntilRetirement(1998, 'Vlad'));
-
-console.log(yearsUntilRetirement(1980, 'Bob'));
+console.log(fruitProcessor(2, 3));
