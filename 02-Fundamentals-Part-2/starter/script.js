@@ -1,18 +1,15 @@
-// function declaration
-function calcAge1(birthYear) {
-    return 2021 - birthYear;
-}
+// Arrow function
+const calcAge = birthYear => 2021 - birthYear;
 
-const age1 = calcAge1(1998);
+const age = calcAge(1998);
 
+const yearsUntilRetirement = (birthYear, firstName) => {
+    const age = 2021 - birthYear;
+    const retirement = 65 - age;
 
-// function expression
-const calcAge2 = function(birthYear) {
-    return 2021 - birthYear;
-}
+    return `${firstName} retires in ${retirement} years`;
+};
 
-const age2 = calcAge2(1991);
+console.log(yearsUntilRetirement(1998, 'Vlad'));
 
-console.log(age1, age2);
-
-
+console.log(yearsUntilRetirement(1980, 'Bob'));
