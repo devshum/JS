@@ -1,30 +1,26 @@
 'use strict';
 
-// Add elements
-const friends = ['Michael', 'Steven', 'Peter'];
+const bills = [125, 555, 44];
 
-const newLength = friends.push('Jay');
+const calcTip = bills => {
+  const billsArr = bills;
 
-console.log(friends);
-console.log(newLength);
+  const tipsArr = bills.map(bill => {
+    switch (true) {
+      case bill >= 50 && bill <= 300:
+        return Math.ceil(bill * .15)
+      default:
+        return Math.ceil(bill * .2);
+    };
+  });
 
-friends.unshift('John');
+  const billsAndTipsArr = billsArr.map((bill, i) => bill + tipsArr[i]);
 
-console.log(friends);
+  return {
+    billsPlusTips: billsAndTipsArr, // [144, 666, 53]
+    bills: billsArr, // [125, 555, 44]
+    tips: tipsArr  // [19, 111, 9]
+  };
+};
 
-// Remove elements
-friends.pop();
-const popped = friends.pop();
-console.log(friends);
-console.log(popped);
-
-friends.shift();
-console.log(friends);
-
-console.log(friends.indexOf('Steven'));
-
-console.log(friends.includes('Steven'));
-
-if (friends.includes('Steven')) {
-  console.log('You have a friend called Peter');
-} 
+const result = calcTip(bills);
