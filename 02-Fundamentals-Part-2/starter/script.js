@@ -32,3 +32,12 @@ for(let exercise = 1; exercise < 4; exercise++) {
     }
 }
 
+of jonasArray[i] === 'string') continue
+
+    // console.log(jonasArray[i], typeof jonasArray[i])
+
+    if(typeof jonasArray[i] === 'number') break
+
+    console.log(jonasArray[i], typeof jonasArray[i])
+}
+
