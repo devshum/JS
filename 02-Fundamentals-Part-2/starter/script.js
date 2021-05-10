@@ -1,55 +1,21 @@
 'use strict'
 
-const jonasArray = [
-    'Jonas',
-    'Schmedtmann',
-    2037 - 1991,
-    'teacher',
-    ['Michael', 'Peter', 'Steven']
-]
+// for (let rep = 1; rep <= 10; rep++) {
+//     console.log(`Lifting weights repetition ${rep}`)
+// }
 
-const types = []
+// let rep = 1
+// while (rep <= 10) {
+//     console.log(`Lifting weights repetition ${rep}`)
+//     rep++
+// }
 
-for(let i = 0; i < jonasArray.length; i++) {
-    console.log(jonasArray[i], typeof jonasArray[i])
+let randomNum = Math.floor(Math.random() * 6) + 1
 
-    // types.push(typeof jonasArray[i])
+while( randomNum !== 6) {
+    console.log('You rolled a ' + randomNum)
 
-    types[i] = typeof jonasArray[i]
+    randomNum = Math.floor(Math.random() * 6) + 1
+
+    if (randomNum === 6) console.log('Loop is about to end...')
 }
-
-console.log(types)
-
-const newArr = jonasArray.map(el => typeof el)
-console.log(newArr)
-
-const years = [1991, 2007, 1969, 2020]
-const ages = []
-
-
-const calcAge = year => 2020 - year; 
-
-for(let i = 0; i < years.length; i++) {
-    ages.push(calcAge(years[i]))
-}
-
-console.log(ages)
-
-const newAges = years.map(year => calcAge(year))
-
-console.log(newAges)
-
-// continue and break
-
-for(let i = 0; i < jonasArray.length; i++) {
-
-    // if(typeof jonasArray[i] === 'string') continue
-
-    // console.log(jonasArray[i], typeof jonasArray[i])
-
-    if(typeof jonasArray[i] === 'number') break
-
-    console.log(jonasArray[i], typeof jonasArray[i])
-}
-
-
