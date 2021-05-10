@@ -1,5 +1,6 @@
 'use strict'
 
+
 const bills = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52]
 
 let sum;
@@ -62,3 +63,4 @@ bills.forEach(bill => {
 console.log(tips)
 console.log(totals)
 console.log(newTotals)
+
