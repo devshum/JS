@@ -1,62 +1,27 @@
 // Remember, we're gonna use strict mode in all scripts now!
 'use strict';
 
-const temperatures = [3, -2, -6, -1, 'error', 9, 23, 17, 15, 14, 5]
-const temperatures1 = [6, 1, 12, 2, 13, 'error', -23, 5]
+const measureKelvin = () => {
+    const measurement = {
+        type: 'temp',
+        unit: 'celsius',
 
-const calcAverageTemperature = (temp1, temp2) => {
-
-    const arrayConcat = temp1.concat(temp2)
-
-    let max = arrayConcat[0]
-    let min = arrayConcat[0]
-
-    for(let i = 0; i < arrayConcat.length; i++) {
-        let curTemp = arrayConcat[i]
-
-        if (typeof curTemp !== 'number' ) continue
-
-        if (curTemp > max) max = curTemp
-
-        if (curTemp < min) min = curTemp
+        // C) FIX
+        value: Number(prompt('Degrees celsius:'))
     }
 
-    return max - min
+
+    // B) FIND
+    console.log(measurement)
+    // console.table(measurement)
+
+    console.log(measurement.value)
+    // console.warn(measurement.value)
+    // console.error(measurement.value)
+
+    const kelvin = measurement.value + 273
+    return kelvin
 }
 
-console.log(calcAverageTemperature(temperatures, temperatures1))
-
-// const calcAmplitude = temperatures => {
-//     let amplitude
-    
-//     const minValue = temperatures.reduce((prev, val) => {
-//         let minVal
-    
-//         prev < val ? minVal = prev : minVal = val
-    
-//         if(val === 'error') minVal = prev
-    
-//         return minVal
-//     }, 0);
-
-//     const minVal = minValue;
-    
-    
-//     const maxValue = temperatures.reduce((prev, val) => {
-//         let maxVal
-    
-//         prev < val ? maxVal = val : maxVal = prev
-    
-//         if(val === 'error') maxVal = prev
-    
-//         return maxVal
-//     }, 0);
-
-//     const maxVal = maxValue
-
-//     amplitude = maxVal - minVal
-
-//     return amplitude
-// }
-
-// console.log(calcAmplitude(temperatures))
+// A) IDENTIFY A BUG 
+console.log(measureKelvin())
