@@ -1,27 +1,19 @@
 // Remember, we're gonna use strict mode in all scripts now!
 'use strict';
 
-const measureKelvin = () => {
-    const measurement = {
-        type: 'temp',
-        unit: 'celsius',
+const values = [17, 21, 23]
+const values1 = [12, 5, -5, 0, 4]
 
-        // C) FIX
-        value: Number(prompt('Degrees celsius:'))
-    }
+const printForecast = values => {
+    let newArr = values.map((value, i) => `${value}°C in ${i + 1} days`)
+
+   return `... ${newArr.join(' ... ')} ...`
+
+}   
+
+console.log(printForecast(values));
+console.log(printForecast(values1));
 
 
-    // B) FIND
-    console.log(measurement)
-    // console.table(measurement)
 
-    console.log(measurement.value)
-    // console.warn(measurement.value)
-    // console.error(measurement.value)
 
-    const kelvin = measurement.value + 273
-    return kelvin
-}
-
-// A) IDENTIFY A BUG 
-console.log(measureKelvin())
