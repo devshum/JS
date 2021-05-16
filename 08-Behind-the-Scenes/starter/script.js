@@ -1,45 +1,47 @@
 'use strict';
 
-// variables
-console.log(me);
-// console.log(job);
-// console.log(year);
+// var firstName = 'Matilda';
 
-var me = 'Jonas';
-let job = 'teacher';
-const year = 1991;
+const jonas = {
+    firstName: 'Jonas',
+    year: 1991,
+    calcAge: function() {
+        console.log(this);
+        console.log(2037 - this.year);
 
-// function
-console.log(addDecl(1, 2));
-// console.log(addExpr(1, 2));
-// console.log(addArrow(1, 2));
+        // const self = this;
+        // const isMillenial = function() {
+        //     // console.log(this.year >= 1981 & this.year <= 1996)
 
-function addDecl(a, b) {
-    return a + b;
-}
+        //     console.log(self.year >= 1981 & self.year <= 1996)
+        // };
 
+        const isMillenial = () => {
+            console.log(this.year >= 1981 & this.year <= 1996)
+        }
+
+        isMillenial();
+    },
+
+    greet: () => console.log(`Hey ${this.firstName}`)
+};
+
+jonas.greet();
+jonas.calcAge();
+
+// arguments keyword
 const addExpr = function(a, b) {
+    console.log(arguments);
     return a + b;
 }
 
-const addArrow = (a, b) => a + b;
+addExpr(2, 5);
+addExpr(2, 5, 8, 12);
 
-// Example
 
-if(!numProducts) deleteShoppingCard();
-
-var numProducts = 10;
-
-// Example
-function deleteShoppingCard() {
-    console.log('All products were deleted!');
+const addArrow = (a, b) => {
+    console.log(arguments);
+    return a + b;
 }
 
-var x = 1;
-let y = 2;
-const z = 3;
-
-console.log(x === window.x);
-console.log(y === window.y);
-console.log(z === window.z);
-
+addArrow(2, 5);
