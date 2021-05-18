@@ -22,47 +22,65 @@ const restaurant = {
     },
   },
 
-  orderDelivery({starterIndex = 1, mainIndex = 0, time = '20:00', address}) {
-    console.log(`Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`)
+  orderPasta(ing1, ing2, ing3) {
+    console.log(`Here is your delicious pasta with ${ing1}, ${ing2}, ${ing3}`);
   }
 };
 
-restaurant.orderDelivery({
-  time: '22:30',
-  address: 'Via del Sole, 21',
-  mainIndex: 2,
-  starterIndex: 2
-})
+const arr = [7, 8, 9];
+const badNewArray = [1, 2, arr[0], arr[1], arr[2]];
 
-restaurant.orderDelivery({
-  address: 'Via del Sole, 21',
-  starterIndex: 2
-})
+console.log(badNewArray);
 
-const {name, openingHours, categories} = restaurant
+const goodNewArray = [1, 2, ...arr];
 
-console.log(name, openingHours, categories);
+console.log(goodNewArray);
 
-const { name: restaurantName, 
-        openingHours: hours, 
-        categories: tags 
-} = restaurant;
-console.log(restaurantName, hours, tags);
+console.log(...goodNewArray);
 
-// Default values
-const { menu = [], starterMenu: starters = [] } = restaurant;
-console.log(menu, starters);
+const newMenu = [...restaurant.mainMenu, 'Gnocci'];
 
-// Mutating variables
-let a = 111;
-let b = 999;
-const obj = {a: 23, b: 7, c: 14};
+console.log(newMenu);
 
-({a, b} = obj);
-console.log(a, b);
+// copy array
+const mainMenuCopy = [...restaurant.mainMenu];
 
-// Nested objects
-const { fri: {open: o, close: c} } = openingHours;
-console.log(o, c);
+// Join 2 arrays
+const menu = [...restaurant.mainMenu, ...restaurant.starterMenu];
 
+console.log(menu);
+
+// Iterables: arrays. strings, maps, sets. NOT objects
+const str = 'Jonas';
+const letters = [...str, '', 'S.'];
+console.log(letters);
+
+let [firstLetter, o, n, a, lastLetter] = letters;
+
+[firstLetter, lastLetter] = [lastLetter, firstLetter]
+
+console.log(firstLetter, lastLetter)
+
+const newStr = [firstLetter, o, n, a, lastLetter];
+console.log(newStr);
+
+console.log(...str);
+
+// console.log(`${...str} Schmedtmann`);
+
+// const ingredients = [prompt("Let's make pasta! Ingredient 1?"),
+//                      prompt("Ingredient 2?"),
+//                      prompt("Ingredient 3?")];
+// console.log(ingredients);
+
+// restaurant.orderPasta(...ingredients);
+
+// Objects
+const newRestaurant = {founded: 1998, ...restaurant, founder: 'Guiseppe'};
+console.log(newRestaurant);
+
+const restaurantCopy = {...restaurant};
+
+restaurantCopy.name = 'Ristorante Roma';
+console.log(restaurantCopy);
 
