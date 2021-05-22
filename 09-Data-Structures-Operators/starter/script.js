@@ -33,32 +33,12 @@ const restaurant = {
   } 
 };
 
-console.log('------ OR ------');
-console.log(3 || 'Jonas'); // 3
-console.log('' || 'Jonas'); // Jonas
-console.log(true || 0); // true
-console.log(undefined || null); // null(!)
-
-console.log(undefined || 0 || '' || NaN || null); // null
-
 restaurant.numGuests = 0;
-const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
 
-console.log(guests1);
+const guests = restaurant.numGuests || 10;
 
-const guests2 = restaurant.numGuests || 10;
+console.log(guests);
 
-console.log(guests2);
+const guestsCorrect = restaurant.numGuests ?? 10;
+console.log(guestsCorrect);
 
-console.log('------ AND ------');
-console.log(0 && 'Jonas');
-console.log(7 && 'Jonas');
-
-console.log('Hello' && 23 && null && 'jonas');
-
-
-if(restaurant.orderPizza) {
-  restaurant.orderPizza('mushrooms', 'spinach');
-}
-
-restaurant.orderPizza && restaurant.orderPizza('tomatoes')
