@@ -1,7 +1,5 @@
 'use strict';
 
-// Coding Challenge #1
-
 /* 
 We're building a football betting app (soccer for my American friends 😅)!
 
@@ -80,7 +78,6 @@ printGoals(...game.scored);
 
 game.odds.team1 < game.odds.team2 && console.log(game.team1);
 game.odds.team1 > game.odds.team2 && console.log(game.team2);
-
 
 
 
