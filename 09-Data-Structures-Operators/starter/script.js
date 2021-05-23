@@ -33,36 +33,12 @@ const restaurant = {
   } 
 };
 
-// 1) Destructuring 
-// Spread, on RIGHT side of "="
-const arr = [1, 2, ...[3, 4]];
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
 
-// Rest, on LEFT side of "="
-const [a, b, ...others] = [1, 2, 3];
-console.log(a, b, others);
+for (const item of menu) console.log(item);
 
-const [pizza, , risotto, ...otherFood] = [...restaurant.mainMenu, ...restaurant.starterMenu];
-
-console.log(pizza, risotto, otherFood);
-
-// Objects
-const { sat, ...weekdays } = restaurant.openingHours;
-
-console.log(weekdays);
-
-// 2) Functions
-const add = function(...numbers) {
-  let sum = 0;
-  for(let i = 0; i < numbers.length; i++) sum += numbers[i];
-  console.log(sum);
+for (const [i, el] of menu.entries()) {
+  console.log(`${i + i}: ${el}`);
 };
 
-// add(2, 3);
-// add(5, 3, 7, 2);
-
-const x = [23, 5, 7];
-add(...x);
-
-// restaurant.orderPizza('mushrooms', 'onion', 'olives', 'spinach');
-// restaurant.orderPizza('mushrooms');
-
+// console.log([...menu.entries()]);
