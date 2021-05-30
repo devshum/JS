@@ -63,24 +63,58 @@ const game = {
   },
 };
 
+console.log('-------1-------');
 // 1. 
+
 for([i, player] of game.scored.entries()) {
   console.log(`Goal ${i + 1}: ${player}`);
 }
 
+console.log('-------2-------');
 // 2.
-// const { team1, x, team2 } = game.odds;
 
+// const { team1, x, team2 } = game.odds;
 const odds = Object.values(game.odds);
 const oddsAverage = odds.reduce((oddPrev, oddNext) => oddPrev + oddNext / 3, 0);
 
 console.log(oddsAverage);
 
+console.log('-------3-------');
 // 3.
 
-for(const [key, values] of Object.entries(game)) {
-  
+const oddsObj = Object.entries(game.odds);
+
+for([team, odd] of oddsObj) {
+  const teamVal = game[team] || 'draw';
+
+  console.log(`Odd of victory ${teamVal}: ${odd}`);
+};
+
+console.log('-------4-------');
+// 4.
+
+const [team1, team2] = game.players;
+const players = [...team1, ...team2];
+
+const scoredPlayers = [];
+
+for(player of players) {
+  player === 'Gnarby' && scoredPlayers.push(player);
+  player === 'Hummels' && scoredPlayers.push(player);
+  player === 'Lewandowski' && scoredPlayers.push(player);
+};
+
+const obj = {};
+
+const scores = [1, 1, 2];
+
+for([i, player] of scoredPlayers.entries()) {
+  obj[player] = scores[i];
 }
+
+console.log(obj)
+
+
 
 
 
