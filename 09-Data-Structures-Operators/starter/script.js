@@ -1,125 +1,30 @@
-///////////////////////////////////////
-// Coding Challenge #2
+'use strict'
 
-/* 
-Let's continue with our football betting app!
+const orderSet = new Set(['Pasta', 'Pizza', 'Pizza', 'Rissoto', 'Pasta', 'Pizza']);
 
-1. Loop over the game.scored array and print each player name to the console, along with the goal number (Example: "Goal 1: Lewandowski")
-2. Use a loop to calculate the average odd and log it to the console (We already studied how to calculate averages, you can go check if you don't remember)
-3. Print the 3 odds to the console, but in a nice formatted way, exaclty like this:
-      Odd of victory Bayern Munich: 1.33
-      Odd of draw: 3.25
-      Odd of victory Borrussia Dortmund: 6.5
-Get the team names directly from the game object, don't hardcode them (except for "draw"). HINT: Note how the odds and the game objects have the same property names 😉
+console.log(orderSet);
 
-BONUS: Create an object called 'scorers' which contains the names of the players who scored as properties, and the number of goals as the value. In this game, it will look like this:
-      {
-        Gnarby: 1,
-        Hummels: 1,
-        Lewandowski: 2
-      }
+console.log(new Set('Jonas'));
 
-GOOD LUCK 😀
-*/
+console.log(orderSet.size);
+console.log(orderSet.has('Pizza'));
+console.log(orderSet.has('Bread'));
+orderSet.add('Garlic Bread');
+orderSet.add('Garlic Bread');
+orderSet.delete('Rissoto');
+// orderSet.clear();
+console.log(orderSet);
 
-const game = {
-  team1: 'Bayern Munich',
-  team2: 'Borrussia Dortmund',
-  players: [
-    [
-      'Neuer',
-      'Pavard',
-      'Martinez',
-      'Alaba',
-      'Davies',
-      'Kimmich',
-      'Goretzka',
-      'Coman',
-      'Muller',
-      'Gnarby',
-      'Lewandowski',
-    ],
-    [
-      'Burki',
-      'Schulz',
-      'Hummels',
-      'Akanji',
-      'Hakimi',
-      'Weigl',
-      'Witsel',
-      'Hazard',
-      'Brandt',
-      'Sancho',
-      'Gotze',
-    ],
-  ],
-  score: '4:0',
-  scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
-  date: 'Nov 9th, 2037',
-  odds: {
-    team1: 1.33,
-    x: 3.25,
-    team2: 6.5,
-  },
-};
+for(const order of orderSet) console.log(order);
 
-console.log('-------1-------');
-// 1. 
+// Example
+const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];
 
-for([i, player] of game.scored.entries()) {
-  console.log(`Goal ${i + 1}: ${player}`);
-}
+const staffUnique = [...new Set(staff)];
+console.log(staffUnique);
 
-console.log('-------2-------');
-// 2.
+console.log(new Set(['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter']).size);
 
-// const { team1, x, team2 } = game.odds;
-const odds = Object.values(game.odds);
-const oddsAverage = odds.reduce((oddPrev, oddNext) => oddPrev + oddNext / 3, 0);
-
-console.log(oddsAverage);
-
-console.log('-------3-------');
-// 3.
-
-const oddsObj = Object.entries(game.odds);
-
-for([team, odd] of oddsObj) {
-  const teamVal = game[team] || 'draw';
-
-  console.log(`Odd of victory ${teamVal}: ${odd}`);
-};
-
-console.log('-------4-------');
-// 4.
-
-const [team1, team2] = game.players;
-const players = [...team1, ...team2];
-
-const scoredPlayers = [];
-
-for(player of players) {
-  player === 'Gnarby' && scoredPlayers.push(player);
-  player === 'Hummels' && scoredPlayers.push(player);
-  player === 'Lewandowski' && scoredPlayers.push(player);
-};
-
-const obj = {};
-
-const scores = [1, 1, 2];
-
-for([i, player] of scoredPlayers.entries()) {
-  obj[player] = scores[i];
-}
-
-console.log(obj)
-
-
-
-
-
-
-
-
+console.log(new Set('vladshum').size)
 
 
