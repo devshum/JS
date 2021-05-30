@@ -1,30 +1,34 @@
 'use strict'
 
-const orderSet = new Set(['Pasta', 'Pizza', 'Pizza', 'Rissoto', 'Pasta', 'Pizza']);
+const rest = new Map();
 
-console.log(orderSet);
+rest.set('name', 'Classico Italiano');
+rest.set(1, 'Firenze, Italy');
+console.log(rest.set(2, 'Lisbon, Portugal'));
 
-console.log(new Set('Jonas'));
+rest
+.set('caregories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
+.set('open', 11)
+.set('close', 23)
+.set(true, 'We are open :D')
+.set(false, 'We are closed :(');
 
-console.log(orderSet.size);
-console.log(orderSet.has('Pizza'));
-console.log(orderSet.has('Bread'));
-orderSet.add('Garlic Bread');
-orderSet.add('Garlic Bread');
-orderSet.delete('Rissoto');
-// orderSet.clear();
-console.log(orderSet);
+console.log(rest.get('name'));
+console.log(rest.get(true));
 
-for(const order of orderSet) console.log(order);
+const time = 8;
+console.log(rest.get(time > rest.get('open') && time < rest.get('close')));
 
-// Example
-const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];
+console.log(rest.has('caregories'));
+rest.delete(2);
+// rest.clear();
+const arr = [1, 2];
+rest.set(arr, 'Test');
+rest.set(document.querySelector('h1'), 'Heading');
+console.log(rest);
+console.log(rest.size);
 
-const staffUnique = [...new Set(staff)];
-console.log(staffUnique);
+rest.get(arr);
 
-console.log(new Set(['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter']).size);
-
-console.log(new Set('vladshum').size)
 
 
