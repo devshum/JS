@@ -1,58 +1,33 @@
 'use strict'
 
-console.log('a+very+nice+string'.split('+'));
+///////////////////////////////////////
+// Coding Challenge #4
 
-const [firstName, lastName] = 'Vlad Shum'.split(' ');
+/* 
+Write a program that receives a list of variable names written in underscore_case and convert them to camelCase.
 
-const newName = ['Mr.', firstName, lastName.toUpperCase()].join(' ');
+The input will come from a textarea inserted into the DOM (see code below), and conversion will happen when the button is pressed.
 
-const capitalizeName = name => {
-    const splitName = name.split(' ');
-    
-    const capitalizedName = [];
-    
-    for(const namePart of splitName) {
-        // solution 1
-        // capitalizedName.push(namePart[0].toUpperCase() + namePart.slice(1))
-        // solution 2
-        capitalizedName.push(namePart.replace(namePart[0], namePart[0].toUpperCase()));
-              
-    }
+THIS TEST DATA (pasted to textarea)
+underscore_case
+ first_name
+Some_Variable 
+  calculate_AGE
+delayed_departure
 
-    return capitalizedName.join(' ');
-};
+SHOULD PRODUCE THIS OUTPUT (5 separate console.log outputs)
+underscoreCase      ✅
+firstName           ✅✅
+someVariable        ✅✅✅
+calculateAge        ✅✅✅✅
+delayedDeparture    ✅✅✅✅✅
 
-console.log(capitalizeName('jessica ann smith davis'));
-console.log(capitalizeName('vlad shum'));
+HINT 1: Remember which character defines a new line in the textarea 😉
+HINT 2: The solution only needs to work for a variable made out of 2 words, like a_b
+HINT 3: Start without worrying about the ✅. Tackle that only after you have the variable name conversion working 😉
+HINT 4: This challenge is difficult on purpose, so start watching the solution in case you're stuck. Then pause and continue!
 
-// Padding
-const message = 'Go to gate 23!'
-console.log(message.padStart(25, '+').padEnd(35, '+'));
-console.log('Vlad'.padStart(25, '+').padEnd(35, '+'));
+Afterwards, test with your own test data!
 
-const maskCreditCard = number => {
-    const str = number + '';
-    const last = str.slice(-4);
-
-    return last.padStart(str.length, '*');
-};
-
-console.log(maskCreditCard(4335566743356677));
-console.log(maskCreditCard('3556674335667755'));
-
-// Repeat
-const message2 = 'Bad weather... All Departures Delayed...';
-
-console.log(message2.repeat(5));
-
-const planesInLine = n => {
-    console.log(`There are ${n} planes in line ${'✈'.repeat(n)}`);
-};
-
-planesInLine(3);
-planesInLine(9);
-planesInLine(2);
-
-
-
-
+GOOD LUCK 😀
+*/
