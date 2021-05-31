@@ -10,9 +10,9 @@ The input will come from a textarea inserted into the DOM (see code below), and 
 
 THIS TEST DATA (pasted to textarea)
 underscore_case
- first_name
+first_name
 Some_Variable 
-  calculate_AGE
+calculate_AGE
 delayed_departure
 
 SHOULD PRODUCE THIS OUTPUT (5 separate console.log outputs)
@@ -31,3 +31,42 @@ Afterwards, test with your own test data!
 
 GOOD LUCK 😀
 */
+
+document.body.append(document.createElement('textarea'));
+document.body.append(document.createElement('button'));
+
+const btn = document.querySelector('button');
+
+let count = 0;
+let textArea = document.querySelector('textarea');
+
+// btn.addEventListener('click', () => {
+//     count++;
+
+//     let [firstWord, secondWord] = textArea.value.toLowerCase()
+//                                                 .split('_');
+
+//     textArea.value = '';
+
+//     [firstWord, secondWord = secondWord.replace(secondWord[0], secondWord[0].toUpperCase())];
+
+//     console.log(`${firstWord + secondWord} ${'✅'.repeat(count)}`);
+// });
+
+
+btn.addEventListener('click', () => {
+    const strings = textArea.value.split('\n');
+
+    for(const [i, string] of strings.entries()) {
+        let [firstWord, secondWord] = string.toLowerCase()
+                                            .trim()
+                                            .split('_');
+
+        [firstWord, secondWord = secondWord.replace(secondWord[0], secondWord[0]
+                                           .toUpperCase())];
+
+        const output = (firstWord + secondWord).padEnd(20) + '✅'.repeat(i + 1);
+
+        console.log(output);
+    }
+});
