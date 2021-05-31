@@ -1,74 +1,19 @@
 'use strict'
 
-const airline = 'TAP Air Portugal';
-const plane = 'A320';
+const flights =
+  '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
-console.log(airline.toLowerCase());
-console.log(airline.toUpperCase());
+// 🔴 Delayed Departure from FAO to TXL (11h25)
+//              Arrival from BRU to FAO (11h45)
+//   🔴 Delayed Arrival from HEL to FAO (12h05)
+//            Departure from FAO to LIS (12h30)
 
-// fix capitalization in name
-const passenger = 'vLaD'; // Vlad
-const passengerLower = passenger.toLowerCase();
-const passengerCorrect = passengerLower[0].toUpperCase() 
-                       + passengerLower.slice(1);
+const getCode = str => str.slice(0, 3).toUpperCase();
 
-console.log(passengerCorrect);
+for(const flight of flights.split('+')) {
+    const [type, from, to, time] = flight.split(';');
 
-const fixCapitalization = name => {
-    const passengerLower = name.toLowerCase();
-    const passengerCorrect = passengerLower[0].toUpperCase() 
-                            + passengerLower.slice(1);
+    const output = `${type.startsWith('_Delayed') ? '🔴' : ''}${type.replaceAll('_', ' ')} from ${getCode(from)} to ${getCode(to)} (${time.replace(':', 'h')})`.padStart(46);
 
-    return passengerCorrect;
-};
-
-console.log(fixCapitalization('mAsha'));
-
-// Comparing emails
-const email = 'hello@vlad.io';
-const loginEmail = '  Hello@Vlad.Io '
-
-// const lowerEmail = loginEmail.toLowerCase();
-// const trimmedEmail = lowerEmail.trim();
-
-
-const normalizedEmail = loginEmail
-                        .toLowerCase()
-                        .trim();
-
-console.log(email === normalizedEmail);
-
-// replacing
-const priceGB = '288,97£';
-const priceUS = priceGB.replace('£', '$')
-                       .replace(',', '.');
-
-const announcement = 'All passengers come to barding door 23. Boarding door 23!'
-
-console.log(announcement.replace('door', 'gate'));
-
-console.log(announcement.replaceAll('door', 'gate'))
-
-// Booleans
-const planeNeo = 'Airbus A320neo';
-console.log(planeNeo.includes('A320'));
-console.log(planeNeo.startsWith('Air'));
-
-if(plane.startsWith('Airbus') && plane.endsWith('neo')) {
-    console.log('Part of the NEW Airbus family')
-};
-
-// Practice exercise 
-const checkBaggage = items => {
-    const baggage = items.toLowerCase()
-
-    if(baggage.includes('knife') || baggage.includes('gun')) {
-        console.log('You are NOT allowed on board')
-    } else {
-        console.log('Welcome aboard!');
-    }
-};
-
-checkBaggage('I have a laptop, some food and a pocket Knife');
-checkBaggage('Socks and camera');
-checkBaggage('Got some snacks and a gun for protection');
+    console.log(output);
+}
