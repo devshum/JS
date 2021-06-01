@@ -1,33 +1,28 @@
 'use strict';
 
-const flight = 'LH234';
+const oneWord = str => str.replaceAll(' ', '').toLowerCase();
 
-const vlad = {
-    name: 'Vlad Shum',
-    passport: 24848
+const upperFirstWord = str => {
+    const [first, ...others] = str.split(' ');
+    return [first.toUpperCase(), ...others].join(' ');
 };
 
-const checkIn = (flightNum, passenger) => {
-    flightNum = 'LH999';
+// Hihher-order function
+const transformer = (str, fn) => {
+    console.log(`Original string: ${str}`);
+    console.log(`Transformed string: ${fn(str)}`);
 
-    passenger.name = 'Mr. ' + passenger.name;
-
-    if(passenger.passport === 24848) {
-        alert('Checked in')
-    } else {
-        alert('Wrong passport!');
-    }
+    console.log(`Transformed by: ${fn.name}`)
 };
 
-checkIn(flight, vlad);
+transformer('JavaScript is the best!', upperFirstWord);
 
-console.log(flight);
-console.log(vlad);
+transformer('JavaScript is the best!', oneWord);
 
-const newPassport = person => {
-    person.passport = Math.trunc(Math.random() * 100000000000);
-};
+const hight5 = () => {
+    console.log('🎁');
+}
 
-newPassport(vlad);
-checkIn(flight, vlad)
+document.body.addEventListener('click', hight5);
 
+['Jonas', 'Martha', 'Adam'].forEach(hight5);
