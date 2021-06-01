@@ -1,28 +1,13 @@
 'use strict';
 
-const oneWord = str => str.replaceAll(' ', '').toLowerCase();
-
-const upperFirstWord = str => {
-    const [first, ...others] = str.split(' ');
-    return [first.toUpperCase(), ...others].join(' ');
-};
-
-// Hihher-order function
-const transformer = (str, fn) => {
-    console.log(`Original string: ${str}`);
-    console.log(`Transformed string: ${fn(str)}`);
-
-    console.log(`Transformed by: ${fn.name}`)
-};
-
-transformer('JavaScript is the best!', upperFirstWord);
-
-transformer('JavaScript is the best!', oneWord);
-
-const hight5 = () => {
-    console.log('🎁');
+const greet = greeting => {
+    return name => {
+        console.log(`${greeting} ${name}`);
+    }
 }
 
-document.body.addEventListener('click', hight5);
+greet('Hello')('Vlad');
 
-['Jonas', 'Martha', 'Adam'].forEach(hight5);
+const greetLine = greeting => name => console.log(`${greeting} ${name}`);
+
+greetLine('Hello')('Mr')
