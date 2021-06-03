@@ -1,19 +1,16 @@
 'use strict';
 
-(function() {
-  console.log('This will never run again');
+const secureBooking = () => {
+  let passengerCount = 0;
 
-  const isPrivate = 23;
-})();
+  return () => {
+    passengerCount++;
+    console.log(`${passengerCount} passengers`);
+  };
+};
 
-// console.log(isPrivate);
+const booker = secureBooking();
 
-(() => console.log('This will ALSO never run again'))();
-
-{
-  const isPrivate = 23;
-  var notPrivate = 46;
-}
-
-// console.log(isPrivate);
-console.log(notPrivate);
+booker();
+booker();
+booker();
