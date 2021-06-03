@@ -40,15 +40,32 @@ const poll = {
   answers: new Array(4).fill(0),
 
   registerNewAnswer() {
-    const poll = prompt(`
-        ${'HELLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO)))))))))))'}
-    `)
+    const answer = Number(prompt(`
+        ${this.question}\n${this.options.join('\n')}\n(Write option number)
+    `));
+
+    answer < this.answers.length && this.answers[answer]++;
+
+    this.displayResults('');
+  },
+
+  displayResults(type) {
+    switch (true) {
+      case typeof type === 'string':
+        console.log(`Poll results are: ${this.answers.join(' ')}`);
+        break;
+      default:
+        console.log(this.answers);
+        break;
+    }
   }
 }
 
-poll.registerNewAnswer();
+document.querySelector('.poll').addEventListener('click', poll.registerNewAnswer.bind(poll));
 
-for(const option of poll.options) {
-    console.log(option.padStart(10, '+'))
-}
+var answers = [1, 5, 3, 9, 6, 1];
+
+const displayOtherAnswers = poll.displayResults.call(this, '', ...answers);
+
+
 
