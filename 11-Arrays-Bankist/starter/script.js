@@ -71,7 +71,7 @@ const displayMovements = movements => {
     const html = `
       <div class="movements__row">
         <div class="movements__type movements__type--${type}">${i + 1} ${type}</div>
-        <div class="movements__value">${movement}€</div>
+        <div class="movements__value">${movement} €</div>
       </div>
     `;
 
@@ -80,42 +80,36 @@ const displayMovements = movements => {
   });
 };
 
-displayMovements(account1.movements);
-
 const calcDisplayBalance = movements => {
   const balance = movements.reduce((movementPrev, movementCur) => movementPrev + movementCur);
 
-  labelBalance.textContent = `${balance}€`;
+  labelBalance.textContent = `${balance} €`;
 };
 
-calcDisplayBalance(account1.movements);
-
-const calcDisplaySummary = movements => {
-  const incomes = movements
+const calcDisplaySummary = account => {
+  const incomes = account.movements
                   .filter(movement => movement > 0)
                   .reduce((prevMovement, nextMovement) => prevMovement + nextMovement);
 
-  labelSumIn.textContent = `${incomes}€`;
+  labelSumIn.textContent = `${incomes} €`;
 
-  const expenses = movements
+  const expenses = account.movements
                   .filter(movement => movement < 0)
                   .reduce((prevMovement, nextMovement) => prevMovement + nextMovement);
 
   labelSumOut.textContent = `${Math.abs(expenses)} €`;
 
-  const interest = movements
+  const interest = account.movements
                    .filter(movement => movement > 0)
-                   .map(deposit => deposit * 1.2 / 100)
+                   .map(deposit => deposit * account.interestRate / 100)
                    .filter((deposit, _, arr) => {
                      console.log(arr)
                      return deposit >= 1;
                    })
                    .reduce((prevDeposit, nextDeposit) => prevDeposit + nextDeposit);
 
-  labelSumInterest.textContent = `${interest}€`;
+  labelSumInterest.textContent = `${interest} €`;
 };
-
-calcDisplaySummary(account1.movements);
 
 const createUserNames = accounts => {
   accounts.forEach(account => {
@@ -128,3 +122,30 @@ const createUserNames = accounts => {
 }
 
 createUserNames(accounts);
+
+let currentAccount;
+
+btnLogin.addEventListener('click', e => {
+  e.preventDefault();
+  
+  currentAccount = accounts.find(account => account.username === inputLoginUsername.value);
+
+  if(currentAccount?.pin === Number(inputLoginPin.value)) {
+    console.log('LOGIN');
+
+    labelWelcome.textContent = `Welcome back, ${currentAccount.owner.split(' ')[0]}`;
+
+    containerApp.style.opacity = 100;
+
+    inputLoginUsername.value = '';
+    inputLoginPin.value = '';
+
+    inputLoginPin.blur();
+
+    displayMovements(currentAccount.movements);
+
+    calcDisplayBalance(currentAccount.movements);
+
+    calcDisplaySummary(currentAccount);
+  }
+});
