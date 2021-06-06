@@ -82,6 +82,14 @@ const displayMovements = movements => {
 
 displayMovements(account1.movements);
 
+const calcDisplayBalance = movements => {
+  const balance = movements.reduce((movementPrev, movementCur) => movementPrev + movementCur);
+
+  labelBalance.textContent = `${balance} EUR`;
+};
+
+calcDisplayBalance(account1.movements);
+
 const createUserNames = accounts => {
   accounts.forEach(account => {
     account.username = account.owner
@@ -93,12 +101,3 @@ const createUserNames = accounts => {
 }
 
 createUserNames(accounts);
-
-const account1Deposits = account1.movements.filter(movement => movement > 0);
-console.log(account1Deposits);
-
-const account1DepositsFor = [];
-for (const movement of account1.movements) if (movement > 0) account1DepositsFor.push(movement);
-console.log(account1DepositsFor);
-
-const withdrawals = account1.movements.filter(movement => movement < 0);
