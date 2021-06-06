@@ -145,13 +145,12 @@ btnLogin.addEventListener('click', e => {
 
     containerApp.style.opacity = 100;
 
-    inputLoginUsername.value = inputLoginPin.value = '';
-    
-
     inputLoginPin.blur();
 
     updateUI(currentAccount);
   }
+
+  inputLoginUsername.value = inputLoginPin.value = '';
 });
 
 btnTransfer.addEventListener('click', e => {
@@ -173,4 +172,20 @@ btnTransfer.addEventListener('click', e => {
 
     updateUI(currentAccount);
   };
+});
+
+btnClose.addEventListener('click', e => {
+  e.preventDefault();
+
+  if (currentAccount.username === inputCloseUsername.value && Number(inputClosePin.value) === currentAccount.pin) {
+
+    labelWelcome.textContent = `Log in to get started`;
+    containerApp.style.opacity = 0;
+
+    const index = accounts.findIndex(account => account.username === currentAccount.username);
+    
+    accounts.splice(index, 1);
+  }
+
+  inputCloseUsername.value = inputClosePin.value = '';
 });
